@@ -18,3 +18,8 @@ temp/
 # Legacy ZF1
 demos/
 extras/documentation
+
+# Ancien .gitignore
+.idea/
+.zfproject.xml
+library/Zend/

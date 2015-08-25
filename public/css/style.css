@@ -1,0 +1,13 @@
+.form-signindefault {
+  max-width: 420px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  background-color: #eee;
+  border: 3px dotted rgba(0,0,0,0.1);  
+  }
+  .colorgraph {
+    height: 7px;
+    border-top: 0px none;
+    background: #C4E17F linear-gradient(to right, #C4E17F, #C4E17F 12.5%, #F7FDCA 12.5%, #F7FDCA 25%, #FECF71 25%, #FECF71 37.5%, #F0776C 37.5%, #F0776C 50%, #DB9DBE 50%, #DB9DBE 62.5%, #C49CDE 62.5%, #C49CDE 75%, #669AE1 75%, #669AE1 87.5%, rgb(98, 194, 228) 87.5%, rgb(98, 194, 228)) repeat scroll 0% 0%;
+    border-radius: 5px;
+}

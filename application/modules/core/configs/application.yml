@@ -1,0 +1,32 @@
+production:
+  phpSettings:
+    display_startup_errors: false
+    display_errors: false
+  bootstrap:
+    path: APPLICATION_PATH/Bootstrap.php
+    class: Bootstrap
+  resources:
+    frontController:
+      defaultModule: core
+      controllerDirectory: APPLICATION_PATH/modules/core/controllers
+      moduleDirectory: APPLICATION_PATH/modules
+      params:
+        displayExceptions: false
+    modules:
+    layout:
+      layoutPath: APPLICATION_PATH/modules/core/layouts/scripts/
+staging:
+  _extends: production
+
+testing:
+  _extends: production
+
+development:
+  _extends: production
+  phpSettings:
+    display_startup_errors: true
+    display_errors: true
+  resources:
+    frontController:
+      params:
+        displayExceptions: true
