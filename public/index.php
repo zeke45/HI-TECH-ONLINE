@@ -7,6 +7,8 @@ defined('APPLICATION_PATH')
 // Define application environment
 defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+
+//define('APPLICATION_ENV', 'production');
 //echo '<pre>';
 //print_r(APPLICATION_ENV);
 //echo '</pre>';

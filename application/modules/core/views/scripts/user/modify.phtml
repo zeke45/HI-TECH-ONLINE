@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class=" col-md-9 col-lg-9 "> 
+                            <form id="login-form" action="<?php echo $this->url(array('controller' => 'user', 'action' => 'index', 'type' => 'apply'), null, true); ?>" method="post" role="form" style="display: block;">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                        <tr>
+                                            <td>Nom</td>
+                                            <td>
+                                                <input type="text" name="lastname" id="username" tabindex="1" class="form-control" placeholder="Nom" value="<?= $this->lastname; ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Prénom</td>
+                                            <td>
+                                                <input type="text" name="firstname" id="username" tabindex="1" class="form-control" placeholder="Prénom" value="<?= $this->firstname; ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adresse email</td>
+                                            <td>
+                                                <input type="email" name="mail" id="email" tabindex="1" class="form-control" placeholder="Adresse email" value="<?= $this->email; ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Numéro de téléphone</td>
+                                            <td>
+                                                <input type="tel" name="phone" id="username" tabindex="1" class="form-control" placeholder="numéro de téléphone" value="<?= $this->telephone; ?>">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adresse</td>
+                                            <td>
+                                                <input type="text" name="address" id="username" tabindex="1" class="form-control" placeholder="Adresse" value='<?= $this->telephone; ?>'>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Code Postal</td>
+                                            <td>
+                                                <input type="text" name="cp" id="username" tabindex="1" class="form-control" placeholder="Code postal" value='<?= $this->codepostale; ?>'>
+                                            </td>
+                                        <tr>
+                                        </tr>
+                                    <td>Ville</td>
+                                    <td>
+                                        <input type="text" name="ville" id="username" tabindex="1" class="form-control" placeholder="Ville" value='<?= $this->ville; ?>'>
+                                    </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pays</td>
+                                        <td>
+                                            <input type="text" name="pays" id="username" tabindex="1" class="form-control" placeholder="Pays" value="<?= $this->pays; ?>">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Changer votre Mot de passe ?</td>
+                                        <td>
+                                            <input type="password" name="password" id="password" tabindex="1" class="form-control" placeholder="Mot de passe" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Confirmer votre Mot de passe</td>
+                                        <td>
+                                            <input type="password" name="confirm-password" id="confirm-password" tabindex="1" class="form-control" placeholder="Mot de passe ">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="remember"> S'abonner au newsletter</label>
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" tabindex="1"   name="newsletter" id="remember" checked="<?= $this->newsletter; ?>">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="or-box row-block">
+                                    <div class="row">
+                                        <div class="col-md-12 row-block">
+                                            <input type="submit" tabindex="1"  value='Enregistrer' id="remember" class="btn btn-primary btn-block">
+                                        </div>
+                                    </div>
+                                </div> 
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

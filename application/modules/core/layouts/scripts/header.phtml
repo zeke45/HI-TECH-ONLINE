@@ -4,38 +4,145 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Hitech-Online</title>
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl('css/bootsnipp.css'); ?>"/>
-        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl('css/bootstrap.css'); ?>"/>
+        <link href="<?php echo $this->baseUrl('css/font-awesome.css'); ?>" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo $this->baseUrl('css/bootstrap.css'); ?>">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl('css/header.css'); ?>"/>
+        <link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl('css/style.css'); ?>"/>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-              <div class="container">
+
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">Hitech-Online</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Works</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">se connecter</a></li>
-                    <li>
-                      <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="#nav-collapse1" aria-expanded="false" aria-controls="nav-collapse1">Categories</a>
-                    </li>
-                  </ul>
-                  </div>
-          </div>
-        </nav>
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                    <ul class="nav navbar-nav">
+                        <li><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), null, true); ?>">Logo</a></li>
+                        <li><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index'), null, true); ?>">Hitech-Online</a></li>
+                        <li class="dropdown mega-dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits<span class="caret"></span></a>				
+                            <div class="dropdown-menu mega-dropdown-menu">
+                                <div style="display: none;" class="dropdown-menu mega-dropdown-menu">
+                                    <div class="container-fluid">
+                                        <div class="tab-content">
+                                            <?php
+                                            $navbar = new Core_Model_Categorie();
+                                            $rubrique = $navbar->getRubrique();
+                                            $ssrubrique = $navbar->getSousRubrique();
+                                            $ssrubrique = $navbar->convertImageSousRubrique($ssrubrique);
+
+                                            $i = 0;
+                                            foreach ($rubrique as $key => $val) {
+                                                if ($i == 0) {
+                                                    echo"<div class='tab-pane active' id='" . $val['nomCategorie'] . "'>";
+                                                } else {
+                                                    echo"<div class='tab-pane' id='" . $val['nomCategorie'] . "'>";
+                                                }
+                                                echo"<ul class='nav-list list-inline'>";
+                                                foreach ($ssrubrique as $s) {
+                                                    if ($s['categorie_id'] == $val['id']) {
+                                                        ?>
+                                                        <li><a href="<?php echo $this->url(array('controller' => 'categorie', 'action' => 'index', 'sous_categorie' => $s['id']), null, true); ?>"> <img width="80" height="80px" src="data:image/<?php echo $s['type'] . ' ;base64,' . $s['img64'] ?>" alt=""><span><?php echo $s['nomCategorie']; ?></span></a></li>
+                                                        <?php
+                                                    }
+                                                }
+                                                echo "</ul></div> ";
+                                                $i++;
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <?php
+                                        $i = 0;
+                                        foreach ($rubrique as $key => $val) {
+                                            if ($i == 0) {
+                                                echo"<li class='active'><a href='#" . $val['nomCategorie'] . "' role='tab' data-toggle='tab'>" . $val['nomCategorie'] . "</a></li>";
+                                            } else {
+                                                echo"<li><a href='#" . $val['nomCategorie'] . "' role='tab' data-toggle='tab'>" . $val['nomCategorie'] . "</a></li>";
+                                            }
+                                            $i++;
+                                        }
+                                        ?>
+                                    </ul>                    
+                                </div>		
+
+                            </div>				
+                        </li>
+                        <li><a href="<?php echo $this->url(array('controller' => 'event', 'action' => 'index'), null, true); ?>">Evênement</a></li>
+                    </ul>
+                    <!--<form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>-->
+
+
+                    <?php if ($this->admin != null): ?>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-shopping-cart"></span> 7 - Items<span class="caret"></span></a>
+                                <ul class="dropdown-menu dropdown-cart" role="menu">
+                                    <li>
+                                        <span class="item">
+                                            <span class="item-left">
+                                                <img src="http://lorempixel.com/50/50/" alt="" />
+                                                <span class="item-info">
+                                                    <span>Item name</span>
+                                                    <span>23$</span>
+                                                </span>
+                                            </span>
+                                            <span class="item-right">
+                                                <button class="btn btn-xs btn-danger pull-right">x</button>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="item">
+                                            <span class="item-left">
+                                                <img src="http://lorempixel.com/50/50/" alt="" />
+                                                <span class="item-info">
+                                                    <span>Item name</span>
+                                                    <span>23$</span>
+                                                </span>
+                                            </span>
+                                            <span class="item-right">
+                                                <button class="btn btn-xs btn-danger pull-right">x</button>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a class="text-center" href="#Panier">Visualiser le panier</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?= $this->firstname . " " . $this->lastname ?><span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="<?php echo $this->url(array('controller' => 'user', 'action' => 'index'), null, true); ?>">parametre du compte</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'destroy'), null, true); ?>">Se déconnecter</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
+                </div><!-- /.navbar-collapse -->
+
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div style="height: 90px;"></div>
+
