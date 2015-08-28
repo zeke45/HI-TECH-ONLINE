@@ -13,21 +13,20 @@ class Core_Model_Event extends Zend_Db_Table_Abstract {
 
         $flag = false;
         if (!empty($row[0]) && sizeof($row[0]) > 0) {
-            $flag = $row[0];
+            $flag = $row;
         }
         return $flag;
     }
-    public function getProduitsEvent($idProduit)
+    public function getProduitsEvent()
     {          
         $select = $this->select()
                 ->from('evenements_produits')
-                ->setIntegrityCheck(false)
-                ->where('evenements_id = ?', $idProduit);
+                ->setIntegrityCheck(false);
         $row = $this->fetchAll($select)->toArray();
 
         $flag = false;
         if (!empty($row[0]) && sizeof($row[0]) > 0) {
-            $flag = $row[0];
+            $flag = $row;
         }
         return $flag;
     }

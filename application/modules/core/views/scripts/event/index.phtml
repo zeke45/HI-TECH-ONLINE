@@ -1,2 +1,72 @@
-<?php
 
+
+<section class="col-xs-12 col-sm-6 col-md-12">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <?php
+                                $compteurCommand = 0;
+                                foreach ($this->events as $cv):
+                                    ?>
+                                    <div class="accordion-toggle " data-toggle="collapse" href="#commandeVente<?php echo $cv['id']; ?>">
+                                        <table class="table table-striped">
+                                            <?php if ($compteurCommand == 0) { ?>
+                                                <thead>
+                                                    <tr>
+                                                        <td>N° d'Event</td>
+                                                        <td>Nom</td>
+                                                        <td>Date de Début</td>
+                                                        <td>Date de Fin</td>
+                                                       
+                                                    </tr>
+                                                </thead>
+                                            <?php } $compteurCommand++; ?>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width:155.817px;">N°<?= $cv['id']; ?></td>
+                                                    <td style="width:169.033px;"><?=  $cv['libelle']; ?> </td>
+                                                    <td style="width:116.217px;"><?php
+                                                        $date = new DateTime($cv['dateDebut']);
+                                                        echo $date->format('Y-m-d à H:i');
+                                                        ?></td>
+                                                    <td style="width:116.217px;"><?php
+                                                        $date = new DateTime($cv['dateFin']);
+                                                        echo $date->format('Y-m-d à H:i');
+                                                        ?></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id = "commandeVente<?php echo $cv['id']; ?>" class = "accordion-body collapse">
+                                        <div class = "accordion-inner">
+                                            <table class = "table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom du produit</th>
+                                                        <th>Quantité</th>
+                                                        <th>Prix Unitaire</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                              <?php foreach ($this->produits as $c):
+                                                        if ($c['evenements_id'] == $cv['id']): ?>
+                                                            <tr>
+                                                                <td><?= $c['Produit_id']; ?></td>
+                                                                <td><?= $c['remise']; ?></td>
+                                                                <td><?= $c['quantité']; ?></td>
+                                                                
+                                                            </tr>
+                                                  <?php endif; 
+                                                    endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                            <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>

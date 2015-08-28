@@ -78,7 +78,8 @@
                                             <label for="remember"> S'abonner au newsletter</label>
                                         </td>
                                         <td>
-                                            <input type="checkbox" tabindex="1"   name="newsletter" id="remember" checked="<?= $this->newsletter; ?>">
+                                            <input type="checkbox" tabindex="1"   name="newsletter" id="remember" <?= $this->newsletter==0?:"checked"; ?>
+                                            <?= $this->newsletter; ?>
                                         </td>
                                     </tr>
                                     </tbody>
